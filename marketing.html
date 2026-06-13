@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="SpotWar — spot the difference. Practice offline levels or battle real players online in fast-paced PvP matches." />
+  <title>SpotWar — Spot the Difference. Battle Online.</title>
+  <style>
+    :root {
+      --purple: #7b2ff7;
+      --pink: #ec4899;
+      --orange: #fb923c;
+      --mint: #6bcf7f;
+      --ink: #2c2c54;
+      --muted: #6b7280;
+      --card: rgba(255, 255, 255, 0.92);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 45%, #fb923c 100%);
+      background-attachment: fixed;
+    }
+
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      letter-spacing: -0.02em;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    nav a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 24px 0 48px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.05;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+      margin-bottom: 16px;
+    }
+
+    .hero .tagline {
+      font-size: clamp(1.1rem, 3vw, 1.45rem);
+      color: rgba(255, 255, 255, 0.95);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      font-weight: 500;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      border: 3px solid #fff;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff2e8a, #a855f7);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--purple);
+    }
+
+    .section {
+      background: var(--card);
+      border-radius: 28px;
+      padding: 36px 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      border: 3px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      color: var(--purple);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .feature {
+      background: linear-gradient(180deg, #faf5ff 0%, #fff 100%);
+      border-radius: 20px;
+      padding: 24px 20px;
+      border: 2px solid #ede9fe;
+      text-align: center;
+    }
+
+    .feature .icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .feature h3 {
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .steps {
+      list-style: none;
+      counter-reset: step;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 48px;
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: #fff;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      padding-top: 32px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .wrap {
+        padding: 24px 16px 48px;
+      }
+
+      .section {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <nav>
+      <span class="logo">SpotWar</span>
+      <a href="index.html">Support</a>
+    </nav>
+
+    <header class="hero">
+      <span class="badge">Spot the difference · Online battles</span>
+      <h1>SpotWar</h1>
+      <p class="tagline">
+        Find every hidden difference before your opponent. Practice solo or jump into real-time PvP matches.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://apps.apple.com/us/search?term=SpotWar" rel="noopener">
+          Download on the App Store
+        </a>
+        <a class="btn btn-secondary" href="index.html">Get Support</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>Why players love SpotWar</h2>
+      <div class="features">
+        <article class="feature">
+          <div class="icon">⚔️</div>
+          <h3>Play Online</h3>
+          <p>Battle real players in fast head-to-head spot-the-difference matches.</p>
+        </article>
+        <article class="feature">
+          <div class="icon">🎯</div>
+          <h3>Practice Mode</h3>
+          <p>Sharpen your eye with offline levels — no account required to start.</p>
+        </article>
+        <article class="feature">
+          <div class="icon">🏆</div>
+          <h3>Leaderboard</h3>
+          <p>Climb the ranks, earn coins and XP, and show off your top scores.</p>
+        </article>
+        <article class="feature">
+          <div class="icon">⚡</div>
+          <h3>Energy &amp; Rewards</h3>
+          <p>Manage energy for online play, claim daily rewards, and unlock achievements.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li>Compare two images side by side and tap the differences you spot.</li>
+        <li>Score points for every correct find — wrong taps cost you time.</li>
+        <li>Beat the clock in Practice, or outscore your rival in Online PvP.</li>
+        <li>Level up, collect coins, and compete on the global leaderboard.</li>
+      </ol>
+    </section>
+
+    <section class="section" style="text-align: center;">
+      <h2>Ready to play?</h2>
+      <p style="color: var(--muted); margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto;">
+        SpotWar is free to download on iPhone and iPad. Create an account to save progress, or continue as a guest.
+      </p>
+      <a class="btn btn-primary" href="https://apps.apple.com/us/search?term=SpotWar" rel="noopener">
+        Get SpotWar on the App Store
+      </a>
+    </section>
+
+    <footer>
+      <p>SpotWar · Bundle ID: com.eduard5551.SpotWar</p>
+      <p>
+        <a href="index.html">Support</a>
+        ·
+        <a href="privacy.html">Privacy Policy</a>
+      </p>
+      <p class="muted" style="color: rgba(255,255,255,0.75); margin-top: 12px;">
+        Questions? <a href="mailto:spotwars.differencebattle@gmail.com">spotwars.differencebattle@gmail.com</a>
+      </p>
+    </footer>
+  </div>
+</body>
+
+</html>

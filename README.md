@@ -1,13 +1,16 @@
-# SpotWar — GitHub Pages (Support & Privacy)
+# SpotWar — GitHub Pages (Marketing, Support & Privacy)
 
 Static pages for App Store Connect.
 
 ## Live URLs (after deploy)
 
-| Purpose | URL |
-|--------|-----|
-| **Support URL** | https://eduard5551.github.io/spotwar-support/ |
-| **Privacy Policy URL** | https://eduard5551.github.io/spotwar-support/privacy.html |
+| Purpose                | URL                                                         |
+| ---------------------- | ----------------------------------------------------------- |
+| **Marketing URL**      | https://eduard5551.github.io/spotwar-support/marketing.html |
+| **Support URL**        | https://eduard5551.github.io/spotwar-support/               |
+| **Privacy Policy URL** | https://eduard5551.github.io/spotwar-support/privacy.html   |
+
+Replace `eduard5551` with your GitHub username if different.
 
 ## Deploy to GitHub Pages
 
@@ -19,7 +22,7 @@ Static pages for App Store Connect.
 ```bash
 cd spotwar-support
 git init
-git add index.html privacy.html README.md
+git add index.html marketing.html privacy.html README.md app-ads.txt
 git commit -m "Add SpotWar support and privacy pages"
 git branch -M main
 git remote add origin https://github.com/eduard5551/spotwar-support.git
@@ -32,4 +35,6 @@ git push -u origin main
 
 ## App Store Connect
 
-Paste the Support and Privacy URLs from the table above into your app listing.
+Paste the Marketing, Support, and Privacy URLs from the table above into your app listing.
+
+When your App Store listing is live, replace the App Store search links in `marketing.html` with your direct app URL (`https://apps.apple.com/app/idXXXXXXXXX`).
