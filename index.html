@@ -4,75 +4,310 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SpotWar support — get help, contact us, and find answers to common questions." />
   <title>SpotWar — Support</title>
   <style>
+    :root {
+      --purple: #7b2ff7;
+      --pink: #ec4899;
+      --orange: #fb923c;
+      --mint: #6bcf7f;
+      --ink: #2c2c54;
+      --muted: #6b7280;
+      --card: rgba(255, 255, 255, 0.92);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      max-width: 560px;
-      margin: 48px auto;
-      padding: 0 24px;
-      color: #1f2937;
+      color: var(--ink);
       line-height: 1.6;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 45%, #fb923c 100%);
+      background-attachment: fixed;
     }
 
-    h1 {
-      color: #7b2ff7;
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
     }
 
-    h2 {
-      font-size: 1.1rem;
-      margin-top: 2rem;
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
     }
 
-    a {
-      color: #7b2ff7;
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      letter-spacing: -0.02em;
     }
 
-    .muted {
-      color: #6b7280;
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
       font-size: 0.95rem;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    nav a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .page-hero {
+      text-align: center;
+      padding: 8px 0 40px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+      margin-bottom: 12px;
+    }
+
+    .page-hero p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 480px;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+
+    .section {
+      background: var(--card);
+      border-radius: 28px;
+      padding: 36px 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      border: 3px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .section h2 {
+      font-size: 1.4rem;
+      color: var(--purple);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section p {
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section a {
+      color: var(--purple);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .section a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-box {
+      text-align: center;
+      background: linear-gradient(135deg, #faf5ff, #fff0fb);
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 2px solid #ede9fe;
+      margin-top: 8px;
+    }
+
+    .contact-box .email-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--purple);
+      text-decoration: none;
+      padding: 10px 22px;
+      background: #fff;
+      border-radius: 14px;
+      border: 2px solid #ede9fe;
+      box-shadow: 0 4px 12px rgba(123, 47, 247, 0.1);
+    }
+
+    .contact-box .email-link:hover {
+      background: #faf5ff;
+      text-decoration: none;
+    }
+
+    .contact-box .resp {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .faq {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq li {
+      background: linear-gradient(180deg, #faf5ff 0%, #fff 100%);
+      border-radius: 18px;
+      padding: 18px 20px;
+      border: 2px solid #ede9fe;
+    }
+
+    .faq li strong {
+      display: block;
+      color: var(--ink);
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+
+    .faq li span {
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding-top: 32px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .wrap {
+        padding: 24px 16px 48px;
+      }
+
+      .section {
+        padding: 28px 20px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <h1>SpotWar — Support</h1>
-  <p>
-    SpotWar is a spot-the-difference puzzle game with practice levels and online PvP battles.
-  </p>
-  <p><strong>Need help?</strong> Email us:</p>
-  <p>
-    <a href="mailto:spotwars.differencebattle@gmail.com">spotwars.differencebattle@gmail.com</a>
-  </p>
-  <p class="muted">We aim to reply within 48 hours.</p>
+  <div class="wrap">
+    <nav>
+      <span class="logo">SpotWar</span>
+      <div class="nav-links">
+        <a href="marketing.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </nav>
 
-  <h2>Common questions</h2>
-  <ul>
-    <li>
-      <strong>Online play not working?</strong>
-      Sign in with an account (guests cannot play online). Check your internet connection.
-    </li>
-    <li>
-      <strong>No energy?</strong>
-      Energy refills over time (+1 per hour, max 10). Optional rewarded ads may grant extra energy.
-    </li>
-    <li>
-      <strong>Password reset?</strong>
-      Use &ldquo;Forgot password&rdquo; on the login screen in the app.
-    </li>
-    <li>
-      <strong>Delete account or data?</strong>
-      Open the app → Settings → Delete Account (registered users) or Delete Guest Data (guests).
-      Permanently removes your account and associated data.
-    </li>
-  </ul>
+    <header class="page-hero">
+      <span class="badge">Help &amp; Support</span>
+      <h1>Support</h1>
+      <p>We're here to help. Find answers below or reach out and we'll reply within 48 hours.</p>
+    </header>
 
-  <p class="muted">
-    App: SpotWar · Bundle ID: com.eduard5551.SpotWar<br />
-    <a href="marketing.html">About SpotWar</a>
-    ·
-    <a href="privacy.html">Privacy Policy</a>
-  </p>
+    <section class="section">
+      <h2>Contact Us</h2>
+      <div class="contact-box">
+        <p>Questions, bug reports, or feedback? Drop us an email.</p>
+        <a class="email-link" href="mailto:spotwars.differencebattle@gmail.com">
+          spotwars.differencebattle@gmail.com
+        </a>
+        <p class="resp">We aim to reply within 48 hours.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Common Questions</h2>
+      <ul class="faq">
+        <li>
+          <strong>Online play not working?</strong>
+          <span>Sign in with a registered account — guests cannot play online. Make sure you have a stable internet connection before entering a match.</span>
+        </li>
+        <li>
+          <strong>Out of energy?</strong>
+          <span>Energy refills automatically (+1 per hour, up to 10). You can also watch optional rewarded ads to gain extra energy instantly.</span>
+        </li>
+        <li>
+          <strong>Forgot your password?</strong>
+          <span>Tap "Forgot password" on the login screen inside the app. A reset link will be sent to your registered email.</span>
+        </li>
+        <li>
+          <strong>How do I delete my account or data?</strong>
+          <span>Open the app → Settings → Delete Account (registered users) or Delete Guest Data (guests). This permanently removes your account and all associated data.</span>
+        </li>
+        <li>
+          <strong>Progress not syncing across devices?</strong>
+          <span>Make sure you're signed in with the same account on each device. Guest progress is local only and cannot be transferred.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" style="text-align: center;">
+      <h2>Still need help?</h2>
+      <p style="color: var(--muted); max-width: 480px; margin: 0 auto 4px;">
+        Couldn't find what you were looking for? Send us an email and we'll get back to you as soon as possible.
+      </p>
+      <p style="margin-top: 8px;">
+        <a href="mailto:spotwars.differencebattle@gmail.com">spotwars.differencebattle@gmail.com</a>
+      </p>
+    </section>
+
+    <footer>
+      <p>SpotWar · Bundle ID: com.eduard5551.SpotWar</p>
+      <p>
+        <a href="marketing.html">About</a>
+        ·
+        <a href="privacy.html">Privacy Policy</a>
+      </p>
+      <p style="color: rgba(255,255,255,0.75); margin-top: 12px;">
+        Questions? <a href="mailto:spotwars.differencebattle@gmail.com">spotwars.differencebattle@gmail.com</a>
+      </p>
+    </footer>
+  </div>
 </body>
 
 </html>
